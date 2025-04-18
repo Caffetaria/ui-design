@@ -1,0 +1,22 @@
+{
+    "1": {
+        "question": "What is the rule of thirds?",
+        "options": ["A guideline", "A law", "A theory"],
+        "correct": "A guideline"
+    },
+    "2": {
+        "question": "How many sections does the rule of thirds divide an image into?",
+        "options": ["3", "6", "9"],
+        "correct": "9"
+    },
+    "3": {
+        "question": "Which of the following is a benefit of using the rule of thirds?",
+        "options": ["Creates balance", "Adds color", "Increases contrast"],
+        "correct": "Creates balance"
+    },
+    "4": {
+        "question": "Where should the main subject be placed according to the rule of thirds?",
+        "options": ["Center", "On the lines", "Bottom right corner"],
+        "correct": "On the lines"
+    }
+}
