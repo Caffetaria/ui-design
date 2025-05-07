@@ -1,10 +1,18 @@
 {
-    "1": {
-        "title": "Introduction to Rule of Thirds",
-        "content": "The rule of thirds is a guideline..."
-    },
-    "2": {
-        "title": "Practical Examples",
-        "content": "Let's look at some examples..."
-    }
-}  
+  "1": {
+    "title": "Introduction to Rule of Thirds",
+    "content": "The rule of thirds is a composition guideline that divides an image into nine equal parts using two horizontal and two vertical lines. When important elements in your photograph are placed along these lines or at the intersections, your photos often become more balanced, visually appealing, and engaging to the viewer. This principle helps create dynamic images by encouraging photographers to avoid simply centering the subject."
+  },
+  "2": {
+    "title": "Why Use the Rule of Thirds",
+    "content": "Using the rule of thirds can lead to more dynamic and engaging images. The technique creates balance while naturally drawing in viewers to your photographs. When a subject is placed at an intersection point rather than the center, it creates visual tension and interest. The eye naturally moves around the image rather than fixating on a central point and then losing interest. This simple technique is one of the most effective ways to instantly improve your photography composition."
+  },
+  "3": {
+    "title": "How to Apply the Rule of Thirds",
+    "content": "To apply the rule of thirds: 1) Visualize the grid or activate it in your camera settings. Most digital cameras and smartphones have a grid overlay option. 2) Position key elements along the grid lines or at the intersections. For landscapes, try aligning the horizon with the top or bottom horizontal line rather than the middle. 3) For portraits, place the subject's eyes at or near the top intersection points. 4) Experiment with different placements to find the most appealing composition."
+  },
+  "4": {
+    "title": "Common Mistakes to Avoid",
+    "content": "While learning to use the rule of thirds, avoid these common mistakes: 1) Centering everything - sometimes this works, but often creates static, uninteresting images. 2) Ignoring the background - consider how all elements interact with the grid. 3) Not considering the horizon line - avoid placing it in the middle of the frame. 4) Being too strict with the rules - remember that the rule of thirds is a guideline, not a law. Once you understand when to use it, you'll also learn when to break it for creative effect."
+  }
+}

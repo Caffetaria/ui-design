@@ -1,0 +1,248 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Primary blue color for the site */
+.bg-primary {
+  background-color: #4285f4 !important;
+}
+
+.text-primary {
+  color: #4285f4 !important;
+}
+
+.btn-primary {
+  background-color: #4285f4;
+  border-color: #4285f4;
+}
+
+.btn-primary:hover {
+  background-color: #3367d6;
+  border-color: #3367d6;
+}
+
+.btn-outline-primary {
+  color: #4285f4;
+  border-color: #4285f4;
+}
+
+.btn-outline-primary:hover {
+  background-color: #4285f4;
+  border-color: #4285f4;
+}
+
+/* Navigation */
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+/* Card styles */
+.card {
+  border-radius: 0.5rem;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Learn page */
+.lesson-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.lesson-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+/* Quiz styles */
+.quiz-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.progress {
+  height: 0.5rem;
+  background-color: #e9ecef;
+}
+
+.progress-bar {
+  background-color: #4285f4;
+}
+
+.quiz-options .form-check {
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.2s;
+}
+
+.quiz-options .form-check:hover {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+.quiz-options .form-check-input {
+  margin-top: 0.3rem;
+}
+
+/* Results page */
+.results-container {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.score-display {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #4285f4;
+}
+
+/* Rule of thirds grid demonstration */
+.rule-thirds-grid {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.rule-thirds-grid img {
+  width: 100%;
+  display: block;
+}
+
+.grid-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.grid-line-v,
+.grid-line-h {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.grid-line-v {
+  width: 2px;
+  height: 100%;
+  top: 0;
+}
+
+.grid-line-h {
+  height: 2px;
+  width: 100%;
+  left: 0;
+}
+
+.grid-line-v:nth-child(1) {
+  left: 33.33%;
+}
+
+.grid-line-v:nth-child(2) {
+  left: 66.66%;
+}
+
+.grid-line-h:nth-child(3) {
+  top: 33.33%;
+}
+
+.grid-line-h:nth-child(4) {
+  top: 66.66%;
+}
+
+.intersection-point {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 0, 0, 0.7);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.point-1 {
+  left: 33.33%;
+  top: 33.33%;
+}
+
+.point-2 {
+  left: 66.66%;
+  top: 33.33%;
+}
+
+.point-3 {
+  left: 33.33%;
+  top: 66.66%;
+}
+
+.point-4 {
+  left: 66.66%;
+  top: 66.66%;
+}
+
+/* Practice area */
+.interactive-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.draggable-grid {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  cursor: move;
+  z-index: 10;
+}
+
+.grid-overlay {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Explore page */
+.example-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.example-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.example-item img {
+  width: 100%;
+  transition: transform 0.3s;
+}
+
+.example-item:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .card-deck {
+    flex-direction: column;
+  }
+
+  .card {
+    margin-bottom: 1rem;
+  }
+}

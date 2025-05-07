@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Triple Take - Learn the Rule of Thirds</title>
+    <title>Triple Take - Quiz</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -36,7 +36,7 @@
                 >Learn</a
               >
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="{{ url_for('quiz_start') }}">Quiz</a>
             </li>
             <li class="nav-item">
@@ -47,56 +47,33 @@
       </div>
     </nav>
 
-    <header class="py-5 bg-primary text-white">
-      <div class="container text-center">
-        <h1 class="display-4 mb-3">Triple Take</h1>
-        <h2 class="h4 mb-4">Mastering the Rule of Thirds</h2>
-        <p class="lead">
-          Learn to level up your photography game with rule of thirds
-          composition.
-        </p>
-      </div>
-    </header>
+    <div class="container py-5">
+      <div class="quiz-container">
+        <div class="card shadow-sm">
+          <div class="card-body p-md-5 text-center">
+            <h1 class="card-title mb-4">🧠 Test Your Knowledge!</h1>
+            <div class="my-5">
+              <p class="lead">
+                Ready to see how well you understand the rule of thirds? Let's
+                go!
+              </p>
+              <p>
+                Select the best answer for each question. The quiz contains {{
+                total_questions }} questions.
+              </p>
+            </div>
 
-    <main class="container py-5">
-      <div class="row justify-content-center">
-        <div class="col-md-8 text-center">
-          <div class="card-deck mb-5">
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <h5 class="card-title">📘 Learn</h5>
-                <p class="card-text">Visual examples and quick lessons.</p>
-                <a
-                  href="{{ url_for('learn', lesson_id=1) }}"
-                  class="btn btn-outline-primary"
-                  >Start Learning</a
-                >
-              </div>
-            </div>
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <h5 class="card-title">🧪 Practice</h5>
-                <p class="card-text">Try hands-on challenges to improve.</p>
-                <a
-                  href="{{ url_for('practice') }}"
-                  class="btn btn-outline-primary"
-                  >Try It</a
-                >
-              </div>
-            </div>
-            <div class="card shadow-sm bg-primary text-white">
-              <div class="card-body">
-                <h5 class="card-title">✅ Take the Quiz</h5>
-                <p class="card-text">Test your skills in 5 minutes.</p>
-                <a href="{{ url_for('quiz_start') }}" class="btn btn-light"
-                  >Start Quiz</a
-                >
-              </div>
+            <div class="mt-5">
+              <a
+                href="{{ url_for('quiz_question', question_id=1) }}"
+                class="btn btn-lg btn-primary px-5"
+                >Start Quiz</a
+              >
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
 
     <footer class="py-4 bg-white border-top">
       <div class="container text-center">

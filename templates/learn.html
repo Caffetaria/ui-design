@@ -1,15 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ lesson.title }}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-5">
-        <h2>{{ lesson.title }}</h2>
-        <p>{{ lesson.content }}</p>
-        <a href="/quiz/1" class="btn btn-success">Take Quiz</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triple Take - {{ lesson.title }}</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <style>
+      /* Style for numbered lists in the content */
+      .lesson-content ol {
+        padding-left: 20px;
+      }
+      .lesson-content ol li {
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm"
+    >
+      <div class="container">
+        <a class="navbar-brand text-primary font-weight-bold" href="/"
+          >Triple Take</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('learn', lesson_id=1) }}"
+                >Learn</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('quiz_start') }}">Quiz</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('explore') }}">Explore</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+      <div class="lesson-container">
+        <div class="card shadow-sm">
+          <div class="card-body p-md-5">
+            <h1 class="card-title mb-4">{{ lesson.title }}</h1>
+
+            <div class="lesson-content">
+              {% if lesson_id == 3 %}
+              <p class="lead">To apply the rule of thirds:</p>
+              <ol>
+                <li>
+                  Visualize the grid or activate it in your camera settings.
+                  Most digital cameras and smartphones have a grid overlay
+                  option.
+                </li>
+                <li>
+                  Position key elements along the grid lines or at the
+                  intersections. For landscapes, try aligning the horizon with
+                  the top or bottom horizontal line rather than the middle.
+                </li>
+                <li>
+                  For portraits, place the subject's eyes at or near the top
+                  intersection points.
+                </li>
+                <li>
+                  Experiment with different placements to find the most
+                  appealing composition.
+                </li>
+              </ol>
+              {% elif lesson_id == 4 %}
+              <p class="lead">
+                While learning to use the rule of thirds, avoid these common
+                mistakes:
+              </p>
+              <ol>
+                <li>
+                  Centering everything - sometimes this works, but often creates
+                  static, uninteresting images.
+                </li>
+                <li>
+                  Ignoring the background - consider how all elements interact
+                  with the grid.
+                </li>
+                <li>
+                  Not considering the horizon line - avoid placing it in the
+                  middle of the frame.
+                </li>
+                <li>
+                  Being too strict with the rules - remember that the rule of
+                  thirds is a guideline, not a law. Once you understand when to
+                  use it, you'll also learn when to break it for creative
+                  effect.
+                </li>
+              </ol>
+              {% else %}
+              <p class="lead">{{ lesson.content }}</p>
+              {% endif %} {% if lesson_id == 1 %}
+              <!-- Rule of thirds explanation with grid - smaller and centered -->
+              <div class="rule-thirds-grid mt-5 mb-4 text-center">
+                <img
+                  src="https://cdn.expertphotography.com/wp-content/uploads/2018/05/Rule-of-thirdscomposition-grid-2.jpg"
+                  alt="Landscape photo with rule of thirds grid"
+                  class="img-fluid"
+                  style="max-width: 70%; margin: 0 auto"
+                />
+                <!-- Note: The image already has grid lines, so we don't need to overlay them -->
+              </div>
+              <p class="text-center mt-3">
+                <a
+                  href="#"
+                  class="btn btn-sm btn-outline-secondary"
+                  id="toggleGrid"
+                  >Explain the grid</a
+                >
+              </p>
+              <div class="card d-none" id="gridExplanation">
+                <div class="card-body">
+                  <p>
+                    The intersections of the grid lines (where the red circles
+                    are in the image) are the points where you should place key
+                    elements of your composition. These are the focal points
+                    that naturally draw a viewer's attention.
+                  </p>
+                  <p>
+                    In this image, notice how the boat is positioned near an
+                    intersection point, making it a strong compositional
+                    element.
+                  </p>
+                </div>
+              </div>
+              {% endif %} {% if lesson_id == 2 %}
+              <!-- Comparison examples -->
+              <div class="row mt-5">
+                <div class="col-md-6">
+                  <div class="card mb-4">
+                    <img
+                      src="https://public-images.interaction-design.org/literature/articles/materials/ux-daily-article-grid-image-3.png"
+                      class="card-img-top"
+                      alt="Photo using rule of thirds"
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Using Rule of Thirds</h5>
+                      <p class="card-text">
+                        Notice how the subject is positioned at an intersection
+                        point, creating visual interest.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card mb-4">
+                    <img
+                      src="https://www.theclickcommunity.com/blog/wp-content/uploads/2017/10/photo-of-boy-walking-on-the-beach-by-Sabrina-Gebhardt.jpg"
+                      class="card-img-top"
+                      alt="Centered photo"
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Centered Composition</h5>
+                      <p class="card-text">
+                        While sometimes effective, centered compositions like
+                        this beach photo can often feel more static.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %} {% if lesson_id == 3 %}
+              <!-- Application steps -->
+              <div class="card-deck mt-5">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Step 1</h5>
+                    <p class="card-text">
+                      Enable grid lines in your camera or smartphone settings.
+                    </p>
+                  </div>
+                </div>
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Step 2</h5>
+                    <p class="card-text">
+                      Position key elements along the lines or at intersections.
+                    </p>
+                  </div>
+                </div>
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Step 3</h5>
+                    <p class="card-text">
+                      Take multiple shots with different compositions to
+                      compare.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {% endif %} {% if lesson_id == 4 %}
+              <!-- Mistakes to avoid -->
+              <div class="alert alert-warning mt-5">
+                <h5>Remember!</h5>
+                <p>
+                  The rule of thirds is a guideline, not a strict rule. Once you
+                  understand it, you'll also learn when breaking it creates a
+                  more powerful image.
+                </p>
+              </div>
+              {% endif %}
+            </div>
+
+            <div class="lesson-navigation mt-5">
+              {% if prev_id %}
+              <a
+                href="{{ url_for('learn', lesson_id=prev_id) }}"
+                class="btn btn-outline-primary"
+              >
+                <i class="fas fa-arrow-left mr-2"></i> Previous Lesson
+              </a>
+              {% else %}
+              <div></div>
+              {% endif %} {% if next_id %}
+              <a
+                href="{{ url_for('learn', lesson_id=next_id) }}"
+                class="btn btn-primary"
+              >
+                Next Lesson <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+              {% else %}
+              <a href="{{ url_for('practice') }}" class="btn btn-success">
+                Practice Now <i class="fas fa-camera ml-2"></i>
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
-</html> 
+
+    <footer class="py-4 bg-white border-top">
+      <div class="container text-center">
+        <p class="text-muted mb-0">
+          Triple Take - Photography Learning Platform © 2025
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#toggleGrid").click(function (e) {
+          e.preventDefault();
+          $("#gridExplanation").toggleClass("d-none");
+          $(this).text(function (i, text) {
+            return text === "Explain the grid"
+              ? "Hide explanation"
+              : "Explain the grid";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

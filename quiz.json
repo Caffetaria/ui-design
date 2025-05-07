@@ -1,22 +1,90 @@
 {
-    "1": {
-        "question": "What is the rule of thirds?",
-        "options": ["A guideline", "A law", "A theory"],
-        "correct": "A guideline"
-    },
-    "2": {
-        "question": "How many sections does the rule of thirds divide an image into?",
-        "options": ["3", "6", "9"],
-        "correct": "9"
-    },
-    "3": {
-        "question": "Which of the following is a benefit of using the rule of thirds?",
-        "options": ["Creates balance", "Adds color", "Increases contrast"],
-        "correct": "Creates balance"
-    },
-    "4": {
-        "question": "Where should the main subject be placed according to the rule of thirds?",
-        "options": ["Center", "On the lines", "Bottom right corner"],
-        "correct": "On the lines"
-    }
+  "1": {
+    "question": "What is the rule of thirds?",
+    "options": [
+      "A composition guideline that divides an image into nine equal parts",
+      "A camera setting that improves image quality",
+      "A rule stating that photos should contain three subjects"
+    ],
+    "correct": "A composition guideline that divides an image into nine equal parts"
+  },
+  "2": {
+    "question": "How many sections does the rule of thirds divide an image into?",
+    "options": ["3", "6", "9"],
+    "correct": "9"
+  },
+  "3": {
+    "question": "Which of the following is a benefit of using the rule of thirds?",
+    "options": [
+      "Creates more visually balanced compositions",
+      "Increases sharpness and resolution",
+      "Reduces camera shake"
+    ],
+    "correct": "Creates more visually balanced compositions"
+  },
+  "4": {
+    "question": "Where should important elements be placed according to the rule of thirds?",
+    "options": [
+      "Only in the center",
+      "Along the grid lines or at intersections",
+      "Randomly throughout the frame"
+    ],
+    "correct": "Along the grid lines or at intersections"
+  },
+  "5": {
+    "question": "Which photo correctly applies the rule of thirds?",
+    "options": [
+      "Photo A (plant sprouting from dirt)",
+      "Photo B (centered flower)"
+    ],
+    "correct": "Photo A (plant sprouting from dirt)",
+    "image_a": "https://media.istockphoto.com/id/469538141/photo/plant-sprouting-from-the-dirt-with-a-blurred-background.jpg?s=612x612&w=0&k=20&c=uc-WaLHzRlsrBsHrTVO4fEqRqPjkh-MHtlGLj-QWI64=",
+    "image_b": "https://photographylife.com/wp-content/uploads/2014/10/Central-Composition-Image-Sample-5.jpg"
+  },
+  "6": {
+    "question": "Which photo correctly applies the rule of thirds?",
+    "options": [
+      "Photo A (centered cow)",
+      "Photo B (butterfly at intersection)"
+    ],
+    "correct": "Photo B (butterfly at intersection)",
+    "image_a": "https://cdn.expertphotography.com/wp-content/uploads/2018/09/centrail-composition-photography-cow.jpg",
+    "image_b": "https://photopxl.com/pxl-content/uploads/2021/04/DSC_2957-How-to-work-with-flash-in-macro-photography-1024x684.jpg"
+  },
+  "7": {
+    "question": "What is the most common mistake when applying the rule of thirds?",
+    "options": [
+      "Placing subjects at intersection points",
+      "Centering the subject in every photo",
+      "Using horizontal lines"
+    ],
+    "correct": "Centering the subject in every photo"
+  },
+  "8": {
+    "question": "For landscape photography, where should the horizon typically be placed?",
+    "options": [
+      "In the center of the frame",
+      "Along the top or bottom third line",
+      "It doesn't matter"
+    ],
+    "correct": "Along the top or bottom third line"
+  },
+  "9": {
+    "question": "When taking a portrait, where should the subject's eyes ideally be placed?",
+    "options": [
+      "At or near the upper intersection points",
+      "In the exact center of the frame",
+      "At the bottom of the frame"
+    ],
+    "correct": "At or near the upper intersection points"
+  },
+  "10": {
+    "question": "Is it ever appropriate to break the rule of thirds?",
+    "options": [
+      "Yes, when it serves your creative vision",
+      "No, it should always be followed strictly",
+      "Only in abstract photography"
+    ],
+    "correct": "Yes, when it serves your creative vision"
+  }
 }

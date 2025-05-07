@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triple Take - Explore</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body class="bg-light">
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm"
+    >
+      <div class="container">
+        <a class="navbar-brand text-primary font-weight-bold" href="/"
+          >Triple Take</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('learn', lesson_id=1) }}"
+                >Learn</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('quiz_start') }}">Quiz</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('explore') }}">Explore</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+      <h1 class="text-center mb-5">Explore Rule of Thirds Examples</h1>
+
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+          <div class="card shadow-sm mb-4">
+            <div class="card-body p-4">
+              <h2 class="card-title h4 mb-3">Find Inspiration</h2>
+              <p>
+                Browse through these examples to see how professional
+                photographers apply the rule of thirds in various scenarios.
+                Hover over each image to see the grid overlay.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-grid">
+        <!-- Example 1 -->
+        <div class="example-item">
+          <img
+            src="https://cdn.expertphotography.com/wp-content/uploads/2018/05/Rule-of-thirdscomposition-grid-2.jpg"
+            alt="Landscape photography example"
+            class="img-fluid"
+          />
+          <div class="example-overlay">
+            <div class="grid-lines">
+              <div class="grid-line-v"></div>
+              <div class="grid-line-v"></div>
+              <div class="grid-line-h"></div>
+              <div class="grid-line-h"></div>
+            </div>
+          </div>
+          <div class="example-info p-3">
+            <h5>Landscape Photography</h5>
+            <p>
+              The boat is positioned at an intersection point, creating a strong
+              focal element.
+            </p>
+          </div>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="example-item">
+          <img
+            src="https://public-images.interaction-design.org/literature/articles/materials/ux-daily-article-grid-image-3.png"
+            alt="Portrait photography example"
+            class="img-fluid"
+          />
+          <div class="example-overlay">
+            <div class="grid-lines">
+              <div class="grid-line-v"></div>
+              <div class="grid-line-v"></div>
+              <div class="grid-line-h"></div>
+              <div class="grid-line-h"></div>
+            </div>
+          </div>
+          <div class="example-info p-3">
+            <h5>Portrait Photography</h5>
+            <p>
+              The subject is aligned with the right third, creating visual
+              balance.
+            </p>
+          </div>
+        </div>
+
+        <!-- Example 3 -->
+        <div class="example-item">
+          <img
+            src="https://cdn.shopify.com/s/files/1/3026/6974/files/Stunning_Sunset_Tree_Landscape_Photo.jpg?v=1581114226"
+            alt="Sunset tree landscape example"
+            class="img-fluid"
+          />
+          <div class="example-overlay">
+            <div class="grid-lines">
+              <div class="grid-line-v"></div>
+              <div class="grid-line-v"></div>
+              <div class="grid-line-h"></div>
+              <div class="grid-line-h"></div>
+            </div>
+          </div>
+          <div class="example-info p-3">
+            <h5>Sunset Landscape</h5>
+            <p>
+              The tree is positioned at an intersection point, with the horizon
+              on the lower third line.
+            </p>
+          </div>
+        </div>
+
+        <!-- Example 4 - Note: Using placeholder content until specific images are provided -->
+        <div class="example-item">
+          <img
+            src="https://www.theclickcommunity.com/blog/wp-content/uploads/2017/10/photo-of-boy-walking-on-the-beach-by-Sabrina-Gebhardt.jpg"
+            alt="Beach photography example"
+            class="img-fluid"
+          />
+          <div class="example-overlay">
+            <div class="grid-lines">
+              <div class="grid-line-v"></div>
+              <div class="grid-line-v"></div>
+              <div class="grid-line-h"></div>
+              <div class="grid-line-h"></div>
+            </div>
+          </div>
+          <div class="example-info p-3">
+            <h5>Beach Photography</h5>
+            <p>
+              Although this image uses a centered composition, you could improve
+              it by placing the subject at a third intersection.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <a href="{{ url_for('practice') }}" class="btn btn-primary btn-lg"
+          >Try it Yourself</a
+        >
+      </div>
+    </div>
+
+    <footer class="py-4 bg-white border-top">
+      <div class="container text-center">
+        <p class="text-muted mb-0">
+          Triple Take - Photography Learning Platform © 2025
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Show grid overlay on hover
+        $(".example-item").hover(
+          function () {
+            $(this).find(".example-overlay").fadeIn(200);
+          },
+          function () {
+            $(this).find(".example-overlay").fadeOut(200);
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

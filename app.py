@@ -1,20 +1,21 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 import json
+import os
 
 app = Flask(__name__)
+app.secret_key = 'tripletakesecretkey'  # For session management
 
 # Load lesson and quiz data from JSON files
-with open('lessons.json') as f:
-    lessons = json.load(f)
+def load_json_data():
+    with open('lessons.json') as f:
+        lessons = json.load(f)
 
-with open('quiz.json') as f:
-    quiz = json.load(f)
+    with open('quiz.json') as f:
+        quiz = json.load(f)
+        
+    return lessons, quiz
 
-# In-memory storage for user progress (not suitable for production)
-user_progress = {
-    'last_lesson': None,
-    'quiz_answers': {}
-}
+lessons, quiz = load_json_data()
 
 @app.route('/')
 def home():
@@ -22,36 +23,227 @@ def home():
 
 @app.route('/learn/<int:lesson_id>')
 def learn(lesson_id):
-    lesson = lessons.get(str(lesson_id))
-    if lesson:
-        user_progress['last_lesson'] = lesson_id
-        return render_template('learn.html', lesson=lesson)
+    if str(lesson_id) in lessons:
+        lesson = lessons[str(lesson_id)]
+        next_id = lesson_id + 1
+        prev_id = lesson_id - 1
+        
+        # Check if next/prev lessons exist
+        has_next = str(next_id) in lessons
+        has_prev = str(prev_id) in lessons
+        
+        return render_template('learn.html', 
+                               lesson=lesson, 
+                               lesson_id=lesson_id,
+                               next_id=next_id if has_next else None,
+                               prev_id=prev_id if has_prev else None)
     return "Lesson not found", 404
 
+@app.route('/practice')
+def practice():
+    return render_template('practice.html')
+
+@app.route('/quiz')
+def quiz_start():
+    # Reset quiz state
+    if 'quiz_answers' in session:
+        session.pop('quiz_answers')
+    if 'current_question' in session:
+        session.pop('current_question')
+    
+    # Start with question 1
+    session['quiz_answers'] = {}
+    session['current_question'] = 1
+    
+    return render_template('quiz_start.html', total_questions=len(quiz))
+
 @app.route('/quiz/<int:question_id>', methods=['GET', 'POST'])
-def quiz_route(question_id):
+def quiz_question(question_id):
     if request.method == 'POST':
         answer = request.form.get('answer')
-        user_progress['quiz_answers'][question_id] = answer
+        if 'quiz_answers' not in session:
+            session['quiz_answers'] = {}
+        
+        session['quiz_answers'][str(question_id)] = answer
+        
         next_question_id = question_id + 1
         if str(next_question_id) in quiz:
-            return jsonify(success=True, next_question=next_question_id)
+            session['current_question'] = next_question_id
+            return redirect(url_for('quiz_question', question_id=next_question_id))
         else:
-            return jsonify(success=True, next_question=None)
+            return redirect(url_for('quiz_result'))
 
     question = quiz.get(str(question_id))
     if question:
-        return render_template('quiz.html', question=question, question_id=question_id, total_questions=len(quiz))
+        # Make sure to print images to console for debugging
+        if question_id in [5, 6]:
+            print(f"Question {question_id} images:")
+            print(f"Image A: {question.get('image_a')}")
+            print(f"Image B: {question.get('image_b')}")
+            
+        return render_template('quiz.html', 
+                              question=question, 
+                              question_id=question_id, 
+                              total_questions=len(quiz))
     return "Question not found", 404
 
-@app.route('/result')
-def result():
-    # Calculate results based on user_progress data
+@app.route('/quiz/result')
+def quiz_result():
+    # Calculate results based on session data
+    if 'quiz_answers' not in session:
+        return redirect(url_for('quiz_start'))
+    
     correct_answers = 0
     for q_id, q_data in quiz.items():
-        if user_progress['quiz_answers'].get(int(q_id)) == q_data['correct']:
+        if session['quiz_answers'].get(q_id) == q_data['correct']:
             correct_answers += 1
-    return render_template('result.html', score=correct_answers, total=len(quiz))
+    
+    # Calculate percentage
+    total_questions = len(quiz)
+    score_percentage = int((correct_answers / total_questions) * 100)
+    
+    return render_template('result.html', 
+                          score=correct_answers, 
+                          total=total_questions,
+                          percentage=score_percentage)
+
+@app.route('/explore')
+def explore():
+    return render_template('explore.html')
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(debug=True)
+
+@app.route('/quiz')
+def quiz_start():
+    # Reset quiz state
+    if 'quiz_answers' in session:
+        session.pop('quiz_answers')
+    if 'current_question' in session:
+        session.pop('current_question')
+    
+    # Start with question 1
+    session['quiz_answers'] = {}
+    session['current_question'] = 1
+    
+    return render_template('quiz_start.html', total_questions=len(quiz))
+
+@app.route('/quiz/<int:question_id>', methods=['GET', 'POST'])
+def quiz_question(question_id):
+    if request.method == 'POST':
+        answer = request.form.get('answer')
+        if 'quiz_answers' not in session:
+            session['quiz_answers'] = {}
+        
+        session['quiz_answers'][str(question_id)] = answer
+        
+        next_question_id = question_id + 1
+        if str(next_question_id) in quiz:
+            session['current_question'] = next_question_id
+            return redirect(url_for('quiz_question', question_id=next_question_id))
+        else:
+            return redirect(url_for('quiz_result'))
+
+    question = quiz.get(str(question_id))
+    if question:
+        # Make sure to print images to console for debugging
+        if question_id in [5, 6]:
+            print(f"Question {question_id} images:")
+            print(f"Image A: {question.get('image_a')}")
+            print(f"Image B: {question.get('image_b')}")
+            
+        return render_template('quiz.html', 
+                              question=question, 
+                              question_id=question_id, 
+                              total_questions=len(quiz))
+    return "Question not found", 404
+
+@app.route('/quiz/result')
+def quiz_result():
+    # Calculate results based on session data
+    if 'quiz_answers' not in session:
+        return redirect(url_for('quiz_start'))
+    
+    correct_answers = 0
+    for q_id, q_data in quiz.items():
+        if session['quiz_answers'].get(q_id) == q_data['correct']:
+            correct_answers += 1
+    
+    # Calculate percentage
+    total_questions = len(quiz)
+    score_percentage = int((correct_answers / total_questions) * 100)
+    
+    return render_template('result.html', 
+                          score=correct_answers, 
+                          total=total_questions,
+                          percentage=score_percentage)
+
+@app.route('/explore')
+def explore():
+    return render_template('explore.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+@app.route('/quiz')
+def quiz_start():
+    # Reset quiz state
+    if 'quiz_answers' in session:
+        session.pop('quiz_answers')
+    if 'current_question' in session:
+        session.pop('current_question')
+    
+    # Start with question 1
+    session['quiz_answers'] = {}
+    session['current_question'] = 1
+    
+    return render_template('quiz_start.html', total_questions=len(quiz))
+
+@app.route('/quiz/<int:question_id>', methods=['GET', 'POST'])
+def quiz_question(question_id):
+    if request.method == 'POST':
+        answer = request.form.get('answer')
+        if 'quiz_answers' not in session:
+            session['quiz_answers'] = {}
+        
+        session['quiz_answers'][str(question_id)] = answer
+        
+        next_question_id = question_id + 1
+        if str(next_question_id) in quiz:
+            session['current_question'] = next_question_id
+            return redirect(url_for('quiz_question', question_id=next_question_id))
+        else:
+            return redirect(url_for('quiz_result'))
+
+    question = quiz.get(str(question_id))
+    if question:
+        return render_template('quiz.html', 
+                              question=question, 
+                              question_id=question_id, 
+                              total_questions=len(quiz))
+    return "Question not found", 404
+
+@app.route('/quiz/result')
+def quiz_result():
+    # Calculate results based on session data
+    if 'quiz_answers' not in session:
+        return redirect(url_for('quiz_start'))
+    
+    correct_answers = 0
+    for q_id, q_data in quiz.items():
+        if session['quiz_answers'].get(q_id) == q_data['correct']:
+            correct_answers += 1
+    
+    score_percentage = int((correct_answers / len(quiz)) * 100)
+    
+    return render_template('result.html', 
+                          score=correct_answers, 
+                          total=len(quiz),
+                          percentage=score_percentage)
+
+@app.route('/explore')
+def explore():
+    return render_template('explore.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
