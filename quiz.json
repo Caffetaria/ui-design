@@ -35,7 +35,7 @@
     "question": "Which photo correctly applies the rule of thirds?",
     "options": [
       "Photo A (plant sprouting from dirt)",
-      "Photo B (centered flower)"
+      "Photo B (centered portrait of a man)"
     ],
     "correct": "Photo A (plant sprouting from dirt)",
     "image_a": "https://media.istockphoto.com/id/469538141/photo/plant-sprouting-from-the-dirt-with-a-blurred-background.jpg?s=612x612&w=0&k=20&c=uc-WaLHzRlsrBsHrTVO4fEqRqPjkh-MHtlGLj-QWI64=",
@@ -45,9 +45,9 @@
     "question": "Which photo correctly applies the rule of thirds?",
     "options": [
       "Photo A (centered cow)",
-      "Photo B (butterfly at intersection)"
+      "Photo B (close up of flowers)"
     ],
-    "correct": "Photo B (butterfly at intersection)",
+    "correct": "Photo B (close up of flowers)",
     "image_a": "https://cdn.expertphotography.com/wp-content/uploads/2018/09/centrail-composition-photography-cow.jpg",
     "image_b": "https://photopxl.com/pxl-content/uploads/2021/04/DSC_2957-How-to-work-with-flash-in-macro-photography-1024x684.jpg"
   },
