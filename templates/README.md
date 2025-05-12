@@ -36,3 +36,8 @@ Ensure that all images used in this application are either:
 4. Stock photos you have purchased rights to use
 
 You can find suitable free images from sources like Unsplash, Pexels, or Pixabay for the remaining placeholders.
+
+## How To Run
+1. Navigate to root directory
+2. Run python app.py
+
